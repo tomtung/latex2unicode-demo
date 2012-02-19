@@ -1,0 +1,6 @@
+.idea_modules/
+.idea/
+target/
+out/
+*.log
+maven-repo/

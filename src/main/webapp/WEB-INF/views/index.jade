@@ -1,0 +1,20 @@
+!!! 5
+html
+	head
+		title LaTeX2Unicode
+		link(type='text/css' rel='stylesheet' href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono|Droid+Serif')
+		link(type='text/css' rel='stylesheet' href='/css/index.css')
+		script(type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+		script(type="text/javascript" src="/js/jquery.autoresize.min.js")		
+		script(type="text/javascript" src="/js/index.js")		
+	body
+		a(href="https://github.com/tomtung/latex2unicode")
+			img(style="position: absolute; top: 0; right: 0; border: 0;"
+				src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67"
+				alt="Fork me on GitHub")
+		h1 Latex2Unicode
+		hr/
+
+		textarea#tex
+			~~ "This program translates LaTeX markup to \nhuman-readable Unicode when possible.\n\nBasic math notations:\\\\\n\\because \\t{AB} + \\t{BC} \\neq \\t{AC}\n\\therefore \\iint\\sqrt[4]{\\xi^{\\theta + 1}\n- \\frac 38} \\le \\Sigma \\zeta_i \n\\therefore \\exists{x}\\forall{y} x \\in \\^A\n\nEasily type in hundreds of other symbols\nand special characters: \\spadesuit, \\aleph,\n\\OE, \\downdownarrows, etc.\n\nFont styles support: \\textbb{Black\nBoard Bold}, \\textfrak{Fraktur}, {\\bf\nBold Face},{\\cal Calligraphic},{\\it Italic},\n{\\tt Monospace}."
+		#result

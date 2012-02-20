@@ -21,6 +21,12 @@ hr {
 	margin: 0 0 1.45em;
 	border: none;
 }
+h2 {
+	color: #555;
+	font-family: 'Droid Serif';
+	font-size: 15px;
+	text-align: center;
+}
 #tex {
 	overflow-y: auto;
 	overflow-x: auto;

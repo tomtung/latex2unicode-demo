@@ -19,13 +19,13 @@ function query(){
 var text = "\nNow type in this box and try it yourself.\\;\\;\\ddot\\smile";
 var charIndex = 0;
 function type(){
-	var delta = Math.floor(Math.random()*2);
+	var delta = Math.floor(Math.random()*3);
 	if(charIndex<=text.length){
 		var delta = Math.floor(Math.random()*7);
 		$('#tex').val($('#tex').val() + text.substr(charIndex, delta));
 		$('#tex').keyup();
 		charIndex = charIndex + delta;
-		setTimeout("type();", 100 + Math.floor(Math.random()*11));
+		setTimeout("type();", 150 + Math.floor(Math.random()*11));
 	}
 }
 
@@ -49,6 +49,6 @@ $(function() {
 		maxHeight: 2000
 	});
 
-	setTimeout("type();", 1500);
+	setTimeout("type();", 2000);
 	$('#tex').focus();
 });

@@ -21,7 +21,4 @@ libraryDependencies ++= Seq(
 
 resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
 
-resolvers += "com.github.tomtung Snapshot" at "http://tomtung.github.com/maven-repo/snapshots"
-
 seq(StartScriptPlugin.startScriptForClassesSettings: _*)
-

@@ -1,24 +1,49 @@
-import com.typesafe.startscript.StartScriptPlugin
+import org.scalatra.sbt._
+import org.scalatra.sbt.PluginKeys._
+import ScalateKeys._
+
+val ScalatraVersion = "2.5.0"
+
+ScalatraPlugin.scalatraSettings
+
+scalateSettings
 
 organization := "com.github.tomtung"
 
 name := "latex2unicode.demo"
 
-version := "0.1-SNAPSHOT"
+version := "0.2-SNAPSHOT"
 
-scalaVersion := "2.9.1"
+scalaVersion := "2.12.1"
 
-seq(webSettings :_*)
+resolvers += Classpaths.typesafeReleases
+
+resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
 
 libraryDependencies ++= Seq(
-  "org.scalatra" %% "scalatra" % "2.0.3",
-  "org.scalatra" %% "scalatra-scalate" % "2.0.3",
-  "org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725" % "container",
-  "org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725",
-  "javax.servlet" % "servlet-api" % "2.5" % "provided",
-  "com.github.tomtung" % "latex2unicode" % "0.1-SNAPSHOT"
+  "org.scalatra" %% "scalatra" % ScalatraVersion,
+  "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
+  "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
+  "ch.qos.logback" % "logback-classic" % "1.1.5" % "runtime",
+  "org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "container;compile",
+  "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided",
+  "com.github.tomtung" %% "latex2unicode" % "0.2-SNAPSHOT" changing()
 )
 
-resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
+scalateTemplateConfig in Compile := {
+  val base = (sourceDirectory in Compile).value
+  Seq(
+    TemplateConfig(
+      base / "webapp" / "WEB-INF" / "templates",
+      Seq.empty,  /* default imports should be added here */
+      Seq(
+        Binding("context", "_root_.org.scalatra.scalate.ScalatraRenderContext", importMembers = true, isImplicit = true)
+      ),  /* add extra bindings here */
+      Some("templates")
+    )
+  )
+}
 
-seq(StartScriptPlugin.startScriptForClassesSettings: _*)
+enablePlugins(JettyPlugin)
+
+enablePlugins(JavaAppPackaging)

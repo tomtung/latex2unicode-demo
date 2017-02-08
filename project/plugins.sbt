@@ -1,6 +1,5 @@
-libraryDependencies <+= sbtVersion(v => "com.github.siasia" %% "xsbt-web-plugin" % (v+"-0.2.11"))
+addSbtPlugin("org.scalatra.scalate" % "sbt-scalate-precompiler" % "1.8.0.1")
 
-resolvers += Classpaths.typesafeResolver
+addSbtPlugin("org.scalatra.sbt" % "scalatra-sbt" % "0.5.1")
 
-addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.5.0")
-
+addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.0.3")
